@@ -127,30 +127,35 @@ function isCollision(x,y,array){
         return false;
 
 }
-function keyEvent(e) {
-    var key = e.which;
-    switch (key) {
-        case 37:
-        direction ="left";
-        console.log(direction);
-        break;
-        case 38: 
-        direction ="up" 
-        console.log(direction);
-        break;
-        case 39: 
-        direction ="right" ;
-        console.log(direction);
-        break;
-        case 40: 
-        direction ="down" 
-        console.log(direction);
-        break;
-        
-    }
-}
-
-
+// function keyEvent(e) {
+//     var key = e.which;
+    // switch (key) {
+    //     case 37:
+    //     direction ="left";
+    //     console.log(direction);
+    //     break;
+    //     case 38: 
+    //     direction ="up" 
+    //     console.log(direction);
+    //     break;
+    //     case 39: 
+    //     direction ="right" ;
+    //     console.log(direction);
+    //     break;
+    //     case 40: 
+    //     direction ="down" 
+    //     console.log(direction);
+    //     break;
+ function keyEvent(e){ 
+     var key = e.which; 
+ if(key == "37" && direction != "right")
+        direction = "left"; 
+    else if(key == "38" && direction != "down") 
+    direction = "up"; 
+    else if(key == "39" && direction != "left") 
+    direction = "right"; 
+    else if(key =="40" && direction != "up") 
+    direction = "down";  }
     </script>
     
 </body>
