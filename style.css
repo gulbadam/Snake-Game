@@ -1,3 +1,13 @@
+
+html {
+    height: 100%;
+}
+    body {
+    background: linear-gradient(to bottom, #7fc5c9, #deabbe);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
 canvas {
     margin-top: 7rem;
      padding-left: 0;
@@ -6,6 +16,7 @@ canvas {
      margin-right: auto;
      display: block;
      border: 2px solid blueviolet;
+ 
 
 }
 h1 {
