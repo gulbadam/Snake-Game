@@ -19,7 +19,7 @@
     var ctx = canvas.getContext("2d");
     var w = canvas.width;
     var h =  canvas.height;
-    var cellSize = 10;
+    var cellSize = 20;
         var food;
         var snake;
     ctx.strokeStyle = 'green';
@@ -58,8 +58,20 @@ function paintCanvas(){
     ctx.fillRect(0,0,w,h);
     ctx.strokeStyle ="black";
     ctx.strokeRect(0,0,w,h);
+    for (let i = 0; i < snake.length; i++) {
+        paintCell(snake[i].x, snake[i].y);
+        
+    }
+    paintCell(food.x, food.y)
+}
+function paintCell(x, y) {
+ ctx.fillStyle = "blue"; 
+ ctx.fillRect(x*cellSize,y*cellSize,cellSize,cellSize); 
+ ctx.strokeStyle ="white"; 
+ ctx.strokeRect(x*cellSize,y*cellSize,cellSize,cellSize);
 }
 paintCanvas();
+paintCells();
     </script>
     
 </body>
