@@ -6,7 +6,7 @@
     <title>Snake Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="game.js"></script>
+    <!-- <script src="game.js"></script> -->
 </head>
 <body>
     <h1>Snake Game</h1>
@@ -23,17 +23,19 @@
         var food;
         var snake;
     ctx.strokeStyle = 'green';
-    ctx.strokeRect(0, 0, 500, 500);
+    ctx.strokeRect(0, 0, w, h);
+    var timeInt=500;
     
 
 
     function init() {
+
         createSnake();
         createFood();
-        if (typeof gameLoop !="undefined") {
+        if (typeof gameLoop !="undefined") 
             clearInterval(gameLoop);
-            gameLoop = setInterval(paintCanvas, 80);
-        }
+            gameLoop = setInterval(paintCanvas, timeInt);
+        
         
         
     }
@@ -41,7 +43,7 @@
 function createSnake(){
  var length = 5;
     snake =[];
- for (let i =length-1; i >=0; i--) {
+ for (var i =length-1; i >=0; i--) {
       snake.push({x:i, y:0})
         
     }
@@ -58,7 +60,18 @@ function paintCanvas(){
     ctx.fillRect(0,0,w,h);
     ctx.strokeStyle ="black";
     ctx.strokeRect(0,0,w,h);
-    for (let i = 0; i < snake.length; i++) {
+    var hx = snake[0].x;
+    var hy = snake[0].y;
+    hx++;
+    if(hx==-1 || hx== w/cellSize || hy == -1 || hy ==h/cellSize){
+        init();
+        return;
+    }
+    snake.pop();
+    var newHead = {x: hx, y: hy};
+    snake.unshift(newHead);
+
+    for (var i = 0; i < snake.length; i++) {
         paintCell(snake[i].x, snake[i].y);
         
     }
@@ -70,8 +83,9 @@ function paintCell(x, y) {
  ctx.strokeStyle ="white"; 
  ctx.strokeRect(x*cellSize,y*cellSize,cellSize,cellSize);
 }
-paintCanvas();
-paintCells();
+//  paintCanvas(); 
+//  paintCell();
+
     </script>
     
 </body>
