@@ -87,7 +87,14 @@ function paintCanvas(){
         init();
         return;
     }
+    if(hx == food.x && hy == food.y) {
+        createFood();
+        
+
+    }else {
     snake.pop();
+    }
+    
     var newHead = {x: hx, y: hy};
     snake.unshift(newHead);
 
