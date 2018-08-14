@@ -22,6 +22,7 @@
     var cellSize = 20;
         var food;
         var snake;
+        var direction;
     ctx.strokeStyle = 'green';
     ctx.strokeRect(0, 0, w, h);
     var timeInt=500;
@@ -32,6 +33,8 @@
 
         createSnake();
         createFood();
+        window.onkeydown = keyEvent;
+        direction="right";
         if (typeof gameLoop !="undefined") 
             clearInterval(gameLoop);
             gameLoop = setInterval(paintCanvas, timeInt);
@@ -83,8 +86,28 @@ function paintCell(x, y) {
  ctx.strokeStyle ="white"; 
  ctx.strokeRect(x*cellSize,y*cellSize,cellSize,cellSize);
 }
-//  paintCanvas(); 
-//  paintCell();
+function keyEvent(e) {
+    var key = e.which;
+    switch (key) {
+        case 37:
+        direction ="left";
+        console.log(direction);
+        break;
+        case 38: 
+        direction ="up" 
+        console.log(direction);
+        break;
+        case 39: 
+        direction ="right" ;
+        console.log(direction);
+        break;
+        case 40: 
+        direction ="down" 
+        console.log(direction);
+        break;
+        
+    }
+}
 
     </script>
     
