@@ -10,6 +10,8 @@
 </head>
 <body>
     <h1>Snake Game</h1>
+<h3>Scrore: <span id="score"></span>
+</h3>
     <canvas id="gameCanvas"  width="500" height="500">
         Sorry your browser does not support canvas.
 
@@ -23,9 +25,11 @@
         var food;
         var snake;
         var direction;
+        var score;
     ctx.strokeStyle = 'green';
     ctx.strokeRect(0, 0, w, h);
     var timeInt=500;
+    var scoreCount =document.getElementById("score");
     
 
 
@@ -33,6 +37,8 @@
 
         createSnake();
         createFood();
+        score =0;
+        scoreCount.textContent= 0;
         window.onkeydown = keyEvent;
         direction="right";
         if (typeof gameLoop !="undefined") 
@@ -83,13 +89,15 @@ function paintCanvas(){
         //hx++
             //break;
     }
-    if(hx==-1 || hx== w/cellSize || hy == -1 || hy ==h/cellSize){
+    if(hx==-1 || hx== w/cellSize || hy == -1 || hy ==h/cellSize || isCollision(hx,hy,snake)){
         init();
         return;
     }
     if(hx == food.x && hy == food.y) {
+        score++;
+        scoreCount.textContent= score;
         createFood();
-        
+
 
     }else {
     snake.pop();
@@ -109,6 +117,15 @@ function paintCell(x, y) {
  ctx.fillRect(x*cellSize,y*cellSize,cellSize,cellSize); 
  ctx.strokeStyle ="white"; 
  ctx.strokeRect(x*cellSize,y*cellSize,cellSize,cellSize);
+}
+function isCollision(x,y,array){
+    for (var i = 0; i < array.length; i++) {
+        if(array[i].x == x && array[i].y == y) {
+            return true;
+        }
+        }
+        return false;
+
 }
 function keyEvent(e) {
     var key = e.which;
@@ -132,6 +149,7 @@ function keyEvent(e) {
         
     }
 }
+
 
     </script>
     
