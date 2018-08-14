@@ -65,7 +65,24 @@ function paintCanvas(){
     ctx.strokeRect(0,0,w,h);
     var hx = snake[0].x;
     var hy = snake[0].y;
-    hx++;
+    switch (direction) {
+        case "right":
+        hx++;
+        break;
+        case "left": 
+        hx--;
+        break;
+        case "up": 
+        hy--; 
+        break;
+        case "down": 
+        hy++; 
+        break;
+    
+        //default:
+        //hx++
+            //break;
+    }
     if(hx==-1 || hx== w/cellSize || hy == -1 || hy ==h/cellSize){
         init();
         return;
