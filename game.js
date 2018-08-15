@@ -18,6 +18,7 @@ function init() {
 
     createSnake();
     createFood();
+
     score = 0;
     scoreCount.textContent = 0;
     window.onkeydown = keyEvent;
@@ -48,8 +49,17 @@ function createFood() {
 function paintCanvas() {
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = "black";
-    ctx.strokeRect(0, 0, w, h);
+    ctx.strokeStyle = '#eee';
+    //ctx.strokeRect(0, 0, w, h);
+    for(var x=0.5; x<canvas.width; x+=cellSize) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+    }
+    for (var y = 0.5; y < canvas.height; y += cellSize) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+    }
+    ctx.stroke();
     var hx = snake[0].x;
     var hy = snake[0].y;
     switch (direction) {
@@ -127,6 +137,8 @@ function isCollision(x, y, array) {
 //     direction ="down" 
 //     console.log(direction);
 //     break;
+
+
 function keyEvent(e) {
     var key = e.which;
     if (key == "37" && direction != "right")
