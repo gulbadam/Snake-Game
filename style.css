@@ -24,10 +24,12 @@ h1 {
     color: blueviolet;
     font-weight: 700;
     font-size: 4rem;
+    margin-bottom: 0;
 }
 h3 {
     color:blue;
     font-size: 2rem;
+    margin: 0.3rem;
 }
 li {
     display: inline-block;
